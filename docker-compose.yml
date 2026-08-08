@@ -1,0 +1,20 @@
+services:
+  inboxharbor:
+    build: .
+    image: inboxharbor:local
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4174:4174"
+    environment:
+      INBOXHARBOR_ACCESS_TOKEN: "${INBOXHARBOR_ACCESS_TOKEN:?set a random value of at least 32 characters}"
+      INBOXHARBOR_ALLOWED_HOSTS: "127.0.0.1,localhost"
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,noexec,nosuid,nodev
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 100
+    mem_limit: 256m
+    cpus: 0.75

@@ -1,0 +1,16 @@
+.git
+.github
+docs
+tests
+__pycache__
+*.pyc
+.ruff_cache
+.venv
+.env*
+accounts*.txt
+credentials*.txt
+tokens*.txt
+mail*.json
+exports
+output
+*.log
