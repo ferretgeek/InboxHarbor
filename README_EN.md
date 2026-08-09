@@ -1,6 +1,6 @@
 ![InboxHarbor interface preview](docs/images/social-preview.png)
 
-# InboxHarbor · 信港
+# InboxHarbor / 信港 — Outlook Batch Inbox
 
 [![CI](https://github.com/ferretgeek/InboxHarbor/actions/workflows/ci.yml/badge.svg)](https://github.com/ferretgeek/InboxHarbor/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/ferretgeek/InboxHarbor/actions/workflows/codeql.yml/badge.svg)](https://github.com/ferretgeek/InboxHarbor/actions/workflows/codeql.yml)

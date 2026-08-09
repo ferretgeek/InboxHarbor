@@ -1,6 +1,6 @@
 ![信港界面预览](docs/images/social-preview.png)
 
-# 信港 · InboxHarbor
+# 信港 / InboxHarbor — Outlook 批量收件台
 
 [![CI](https://github.com/ferretgeek/InboxHarbor/actions/workflows/ci.yml/badge.svg)](https://github.com/ferretgeek/InboxHarbor/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/ferretgeek/InboxHarbor/actions/workflows/codeql.yml/badge.svg)](https://github.com/ferretgeek/InboxHarbor/actions/workflows/codeql.yml)
