@@ -26,6 +26,8 @@ InboxHarbor is a batch inbox workbench for Microsoft Outlook and Microsoft 365. 
 
 ![InboxHarbor workbench](docs/images/dashboard.png)
 
+![InboxHarbor entry and privacy-boundary design](docs/images/intro.png)
+
 ## Run locally
 
 Python 3.10 or newer is required. There are no third-party runtime dependencies.

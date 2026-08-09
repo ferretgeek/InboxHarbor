@@ -26,6 +26,8 @@
 
 ![信港工作台](docs/images/dashboard.png)
 
+![信港入口与隐私边界设计](docs/images/intro.png)
+
 ## 本地启动
 
 需要 Python 3.10 或更高版本，无运行时第三方依赖。

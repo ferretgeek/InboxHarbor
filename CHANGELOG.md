@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Promoted the populated synthetic inbox workbench to the profile and social preview, with the full workbench and entry composition retained as complementary README images.
+
 ## 1.0.0 - 2026-08-09
 
 - Rebuilt the original one-account CLI as a bilingual, responsive batch inbox workbench.
