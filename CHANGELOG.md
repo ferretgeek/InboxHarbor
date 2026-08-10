@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Promoted the populated synthetic inbox workbench to the profile and social preview, with the full workbench and entry composition retained as complementary README images.
+- Bound direct HTTP service to 64 concurrent workers with a 10-second socket deadline, and replace code-to-context nested rescans with merged linear context windows.
 
 ## 1.0.0 - 2026-08-09
 

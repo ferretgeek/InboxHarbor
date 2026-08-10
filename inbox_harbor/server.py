@@ -23,6 +23,8 @@ from inbox_harbor.models import AccountRecord, FetchSettings, ValidationError
 WEB_ROOT = Path(__file__).resolve().parent.parent / "web"
 MAX_REQUEST_BYTES = 256_000
 MAX_ACCOUNTS = 50
+MAX_CONNECTION_THREADS = 64
+SOCKET_TIMEOUT_SECONDS = 10
 STATIC_FILES = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/index.html": ("index.html", "text/html; charset=utf-8"),
@@ -63,6 +65,35 @@ class RateLimiter:
             if len(self.requests) > 2048:
                 self.requests = defaultdict(deque, {client: history})
             return True
+
+
+class BoundedThreadingHTTPServer(ThreadingHTTPServer):
+    daemon_threads = True
+
+    def __init__(self, address, handler) -> None:
+        self.connection_slots = threading.BoundedSemaphore(MAX_CONNECTION_THREADS)
+        super().__init__(address, handler)
+
+    def get_request(self):
+        request, client_address = super().get_request()
+        request.settimeout(SOCKET_TIMEOUT_SECONDS)
+        return request, client_address
+
+    def process_request(self, request, client_address) -> None:
+        if not self.connection_slots.acquire(blocking=False):
+            self.shutdown_request(request)
+            return
+        try:
+            super().process_request(request, client_address)
+        except BaseException:
+            self.connection_slots.release()
+            raise
+
+    def process_request_thread(self, request, client_address) -> None:
+        try:
+            super().process_request_thread(request, client_address)
+        finally:
+            self.connection_slots.release()
 
 
 def is_loopback_host(host: str) -> bool:
@@ -232,16 +263,15 @@ def make_handler(config: ServerConfig) -> type[BaseHTTPRequestHandler]:
     return InboxHarborHandler
 
 
-def create_server(config: ServerConfig) -> ThreadingHTTPServer:
-    server_class = ThreadingHTTPServer
+def create_server(config: ServerConfig) -> BoundedThreadingHTTPServer:
+    server_class = BoundedThreadingHTTPServer
     if config.host == "::1":
 
-        class IPv6ThreadingHTTPServer(ThreadingHTTPServer):
+        class IPv6ThreadingHTTPServer(BoundedThreadingHTTPServer):
             address_family = socket.AF_INET6
 
         server_class = IPv6ThreadingHTTPServer
     server = server_class((config.host, config.port), make_handler(config))
-    server.daemon_threads = True
     return server
 
 

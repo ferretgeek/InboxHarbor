@@ -77,17 +77,27 @@ def message_body(message: Message, maximum: int = 20_000) -> str:
 
 def extract_codes(subject: str, body: str) -> list[str]:
     text = f"{subject} {body}"
-    contexts = list(CODE_CONTEXT_RE.finditer(text))
-    if not contexts:
+    intervals: list[list[int]] = []
+    for context in CODE_CONTEXT_RE.finditer(text):
+        start = max(0, context.start() - 40)
+        end = min(len(text), context.end() + 40)
+        if intervals and start <= intervals[-1][1]:
+            intervals[-1][1] = max(intervals[-1][1], end)
+        else:
+            intervals.append([start, end])
+    if not intervals:
         return []
     seen: set[str] = set()
     codes: list[str] = []
+    interval_index = 0
     for match in CODE_RE.finditer(text):
         code = match.group(0)
-        if not any(
-            match.start() <= context.end() + 40 and match.end() >= context.start() - 40
-            for context in contexts
-        ):
+        while interval_index < len(intervals) and intervals[interval_index][1] < match.start():
+            interval_index += 1
+        if interval_index >= len(intervals):
+            break
+        start, end = intervals[interval_index]
+        if match.start() > end or match.end() < start:
             continue
         if code not in seen:
             seen.add(code)

@@ -1,6 +1,7 @@
 import http.client
 import os
 import threading
+import time
 import unittest
 from unittest.mock import patch
 
@@ -38,6 +39,16 @@ class ServerBoundaryTests(unittest.TestCase):
     def test_rejects_dns_rebinding_host(self) -> None:
         status, _, _ = self.request("/api/health", "attacker.example")
         self.assertEqual(status, 400)
+
+    def test_server_has_bounded_worker_admission(self) -> None:
+        self.assertEqual(self.server.connection_slots._value, 64)
+        status, _, _ = self.request("/api/health")
+        self.assertEqual(status, 200)
+        for _ in range(20):
+            if self.server.connection_slots._value == 64:
+                break
+            time.sleep(0.01)
+        self.assertEqual(self.server.connection_slots._value, 64)
 
 
 class ServerConfigTests(unittest.TestCase):

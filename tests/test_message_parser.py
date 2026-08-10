@@ -28,6 +28,12 @@ class MessageParserTests(unittest.TestCase):
     def test_codes_require_context(self) -> None:
         self.assertEqual(extract_codes("Receipt", "Order 123456 is shipped"), [])
 
+    def test_many_codes_and_contexts_use_merged_windows(self) -> None:
+        body = " ".join(f"verification {100000 + index}" for index in range(2000))
+        codes = extract_codes("Login", body)
+        self.assertEqual(len(codes), 8)
+        self.assertEqual(codes[0], "100000")
+
 
 if __name__ == "__main__":
     unittest.main()

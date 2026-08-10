@@ -23,6 +23,7 @@ InboxHarbor is a batch inbox workbench for Microsoft Outlook and Microsoft 365. 
 - **Private by default** — masked accounts, veiled message details, and minimal exports with no sender, subject, body, or code value.
 - **A considered interface** — Sky, Jade, and Sunset light themes plus a deep-gray Graphite theme, all responsive.
 - **Local and server ready** — one-command local use; loopback plus SSH tunneling is recommended for remote hosts, with protected HTTPS reverse proxy support when needed.
+- **Bounded service** — the built-in HTTP listener uses a 10-second deadline and 64-thread cap; verification codes are matched against merged context windows in linear time.
 
 ![InboxHarbor workbench](docs/images/dashboard.png)
 
