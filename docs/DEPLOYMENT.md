@@ -10,7 +10,7 @@ The default `http://127.0.0.1:4174` listener accepts loopback traffic only.
 
 ## Remote Linux through an SSH tunnel
 
-Keep InboxHarbor on the server loopback interface:
+Keep the service on the server loopback interface:
 
 ```bash
 python -m inbox_harbor --host 127.0.0.1 --port 4174
@@ -34,7 +34,7 @@ Never commit or screenshot the generated access key.
 
 If a public hostname is unavoidable, set a random `INBOXHARBOR_ACCESS_TOKEN` of at least 32 characters, set the exact hostname in `INBOXHARBOR_ALLOWED_HOSTS`, and place the application behind an HTTPS reverse proxy. Disable request-body, authentication-header, and session-recording logs. The key field in the UI remains in page memory and is not stored.
 
-`GET /api/health` contains no account data. InboxHarbor has no database or migrations, so rollback means restarting the prior image or source release.
+`GET /api/health` contains no account data. The service has no database or migrations, so rollback means restarting the prior image or source release.
 
 ## Architecture, upgrade, and backup
 

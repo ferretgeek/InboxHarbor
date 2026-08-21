@@ -66,7 +66,7 @@ function renderResults(results, isDemo = false) {
     const card = makeElement("article", "account-result");
     const head = makeElement("header", "account-head");
     head.append(makeElement("strong", "", account.account));
-    const status = makeElement("span", account.status === "ok" ? "" : "failed", account.status === "ok" ? "安全抵达" : "未能靠岸");
+    const status = makeElement("span", account.status === "ok" ? "" : "failed", account.status === "ok" ? "读取成功" : "读取失败");
     head.append(status);
     card.append(head);
     if (account.status !== "ok") {

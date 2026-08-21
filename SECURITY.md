@@ -10,7 +10,7 @@ Use GitHub **Private vulnerability reporting**. Do not open a public issue conta
 
 ## Security boundary
 
-InboxHarbor keeps submitted credentials in request memory only, suppresses HTTP request logs, fixes network destinations to Microsoft login and Outlook IMAP hosts, and returns sanitized errors. It cannot protect a compromised browser, extension, operating system, reverse proxy, Microsoft tenant, or exported file.
+The service keeps submitted credentials in request memory only, suppresses HTTP request logs, fixes network destinations to Microsoft login and Outlook IMAP hosts, and returns sanitized errors. It cannot protect a compromised browser, extension, operating system, reverse proxy, Microsoft tenant, or exported file.
 
 The default listener is loopback-only. A non-loopback listener requires an application access key and Host allowlist, but that does not replace HTTPS. For a remote server, keep the published port on loopback and use an SSH tunnel whenever possible.
 

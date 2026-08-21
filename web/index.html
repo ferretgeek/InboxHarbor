@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="description" content="信港是一座隐私优先的 Microsoft Outlook 批量收件工作台。">
-    <title>信港 · InboxHarbor</title>
+    <meta name="description" content="一次查看多个 Microsoft Outlook 邮箱的最新邮件和验证码，只用 OAuth 授权，凭据只在内存中。">
+    <title>Outlook 批量收件台</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="alternate icon" href="/favicon.ico">
     <link rel="stylesheet" href="/styles.css">
@@ -14,11 +14,11 @@
     <div class="ambient ambient-one" aria-hidden="true"></div>
     <div class="ambient ambient-two" aria-hidden="true"></div>
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="信港首页">
+      <a class="brand" href="#top" aria-label="Outlook 批量收件台首页">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 48 48"><path d="M9 15.5 24 7l15 8.5v17L24 41 9 32.5z"/><path d="m14 17 10 7 10-7M24 24v11"/></svg>
         </span>
-        <span><strong>信港</strong><small>InboxHarbor</small></span>
+        <span><strong>Outlook 收件台</strong><small>批量 · 只读</small></span>
       </a>
       <div class="top-actions">
         <label class="key-field" title="仅远程部署需要">
@@ -41,7 +41,7 @@
       <section class="hero">
         <div class="hero-copy">
           <p class="eyebrow"><span></span> PRIVACY-FIRST · MICROSOFT OAUTH2</p>
-          <h1>让散落的收件箱，<br><em>在一处安静的港湾靠岸。</em></h1>
+          <h1>几十个邮箱的验证码，<br><em>一次看完。</em></h1>
           <p class="lede">批量查看 Microsoft Outlook 邮件，轻轻提取验证码。凭据只在本次请求的内存中停留，不写磁盘，不进日志。</p>
           <div class="hero-actions">
             <button class="primary" id="demo-button" type="button">打开合成演示</button>
@@ -85,7 +85,7 @@
             <p class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.6 2.8 8.1 7 10 4.2-1.9 7-5.4 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg>输入会在请求发出后立即从页面清空；不支持密码字段。</p>
 
             <div class="panel-heading settings-heading">
-              <div><span class="step">02</span><h3>设定航程</h3></div>
+              <div><span class="step">02</span><h3>设定范围</h3></div>
             </div>
             <div class="settings-grid">
               <label><span>每箱邮件</span><input id="limit" type="number" min="1" max="20" value="5"></label>
@@ -101,7 +101,7 @@
             <div class="results-toolbar">
               <div>
                 <span class="step">03</span>
-                <h3>靠岸来信</h3>
+                <h3>读取结果</h3>
                 <p id="result-summary">等待一次安全取件</p>
               </div>
               <div class="result-actions">
@@ -122,7 +122,7 @@
       </section>
 
       <section class="footnote">
-        <p>信港只是一座临时码头。离开页面时，带走你的来信，也带走你的秘密。</p>
+        <p>凭据只活在这一次请求里。关掉页面，什么都不会留下。</p>
         <span>InboxHarbor · Open source, local first.</span>
       </section>
     </main>

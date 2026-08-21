@@ -1,6 +1,6 @@
 # Microsoft OAuth2 setup
 
-InboxHarbor ships no developer identity and accepts no mailbox passwords. Register an application in your own Microsoft Entra tenant, grant only delegated `IMAP.AccessAsUser.All` plus `offline_access`, and acquire a refresh token through a Microsoft-supported authorization-code or device-code flow. Prefer MSAL rather than an unknown token generator.
+This project ships no developer identity and accepts no mailbox passwords. Register an application in your own Microsoft Entra tenant, grant only delegated `IMAP.AccessAsUser.All` plus `offline_access`, and acquire a refresh token through a Microsoft-supported authorization-code or device-code flow. Prefer MSAL rather than an unknown token generator.
 
 For consumer Outlook.com accounts, the `consumers` tenant is usually appropriate. IMAP may need to be enabled in Outlook.com settings.
 

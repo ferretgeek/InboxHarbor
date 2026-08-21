@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for helping InboxHarbor become safer and calmer to use.
+Thank you for helping make this project safer and calmer to use.
 
 1. Open an issue for product or behavior changes; use private vulnerability reporting for security findings.
 2. Use synthetic `example.com` / `example.net` identities only. Never attach a real account line, token, message, log, screenshot, host, or tenant.

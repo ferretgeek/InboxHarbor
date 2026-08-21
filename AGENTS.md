@@ -1,4 +1,4 @@
-# InboxHarbor 项目规则
+# Outlook 批量收件台 项目规则
 
 - 先阅读工作区根 `AGENTS.md` 与本项目 `README.md`。
 - 产品定位是隐私优先的 Microsoft Outlook 批量收件工作台；只允许 OAuth2/XOAUTH2，禁止恢复密码认证、任意邮箱主机或原始上游错误回显。
